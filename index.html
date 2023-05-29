@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Candy Item</title>
+</head>
+<body>
+  <h1>Add Candy Item</h1>
+  
+  <form id="addItemForm">
+    <div>
+      <label for="candyName">Candy Name:</label>
+      <input type="text" id="candyName" name="candyName" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" step="0.01" required>
+    </div>
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" required>
+    </div>
+    
+    <button type="button" onclick="addItem()">Add Item</button>
+  </form>
+
+  <h2>Added Items:</h2>
+  <ul id="addedItemsList"></ul>
+
+  <script>
+    function addItem() {
+      var candyName = document.getElementById("candyName").value;
+      var description = document.getElementById("description").value;
+      var price = document.getElementById("price").value;
+      var quantity = document.getElementById("quantity").value;
+      
+      // Create a new list item with the input values
+      var listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>Candy Name:</strong> ${candyName}<br>
+                            <strong>Description:</strong> ${description}<br>
+                            <strong>Price:</strong> $${price}<br>
+                            <strong>Quantity:</strong> ${quantity}<br>`;
+      
+      // Append the list item to the addedItemsList
+      var addedItemsList = document.getElementById("addedItemsList");
+      addedItemsList.appendChild(listItem);
+      
+      // Reset the form fields
+      document.getElementById("addItemForm").reset();
+    }
+  </script>
+</body>
+</html>
